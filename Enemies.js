@@ -1,7 +1,8 @@
 class Enemy extends GameObject {
-    constructor(x, y, sprite, radius, speed) {
+    constructor(sprite, radius, speed) {
         super(x, y, sprite, radius);
-        this.startY = y;
+        this.x = windowWidth + random(0, 500);
+        this.y = random(30, windowHeight - 30);
         this.xSpeed = speed;
         this.health = 40;
         this.death = false;

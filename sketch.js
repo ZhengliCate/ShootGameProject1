@@ -23,9 +23,8 @@ function setup() {
 
     player = new GameObject(windowWidth/2, windowHeight/2, playerSprite, 10);
     for (let i=0; i<20; i++) {
-      enemies[i] = new Enemy(windowWidth + random(0, 500), random(30, windowHeight - 30), enemy1, 30, 2);
+      enemies[i] = new Enemy(enemy1, 30, 2);
     }
-    //cd into folder then type npx http-server in Powershell
 }
 
   
