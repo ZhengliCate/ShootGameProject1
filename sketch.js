@@ -65,20 +65,16 @@ function draw() {
 
     }
 
-    //display enemy
     enemyDisplay();
 
-    //display player bullets
     bulletMove();
 
-    //display enemy bullets
     enemyBulletMove();
 
     removeBullets(bullets);
 
     removeBullets(enemyBullets);
 
-    //player death
     if (playerLife <= 0) {
       state = 2;
     }
@@ -170,7 +166,7 @@ function enemyBulletMove() {
 
 function enemyHitDetection(bullet, player) {
   if (intersectWith(bullet, player)) {
-    bullet.y = height +10;
+    removeBullets(bullet);
     playerLife -= 20;
     background(255,0,0);
   }
