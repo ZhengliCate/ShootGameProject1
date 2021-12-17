@@ -83,8 +83,9 @@ function draw() {
       state = 2;
     }
 
+    console.log(enemies.length);
+
     if (enemies.length == 0) {
-      console.log(enemies.length)
       fill(255);
       textSize(25);
 		  text("STAGE", width/2, 300);
@@ -152,6 +153,7 @@ function hitDetection() {
         enemies[j].health -=10;
         if (enemies[j].health <= 0) {
           enemies[j].death = true;
+          shorten(enemies);
         }
       }
     }
