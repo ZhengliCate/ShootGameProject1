@@ -22,7 +22,7 @@ function setup() {
     
 
     player = new GameObject(windowWidth/2, windowHeight/2, playerSprite, 10);
-    for (let i=0; i<15; i++) {
+    for (let i=0; i<20; i++) {
       enemies[i] = new Enemy(enemy1, 30, 2);
     }
 }
