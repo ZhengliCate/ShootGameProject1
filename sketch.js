@@ -22,7 +22,7 @@ function setup() {
     
 
     player = new GameObject(windowWidth/2, windowHeight/2, playerSprite, 10);
-    for (let i=0; i<20; i++) {
+    for (let i=0; i<15; i++) {
       enemies[i] = new Enemy(enemy1, 30, 2);
     }
 }
@@ -83,8 +83,6 @@ function draw() {
       state = 2;
     }
 
-    console.log(enemies.length);
-
     if (enemies.length == 0) {
       fill(255);
       textSize(25);
@@ -97,14 +95,16 @@ function draw() {
 
 function enemyDisplay() {
   for (const enemy of enemies) {
+    enemy.display();
     enemy.move();
+    if (enemy.x <= -50) {
+      console.log(enemies.length);
+      enemy.x = windowWidth + random(0, 200);
+      enemy.y = random(30, windowHeight - 30);
+      enemy.randomState();
+    }
     if (enemy.fire()) {
       enemyBullets.push(new Projectile(enemy.x, enemy.y, enemyShot, enemy.radius, -4));
-    }
-    enemy.display();
-    if (enemy.x < -50) {
-      enemy.x = windowWidth + random(0, 500);
-      enemy.y = random(10, windowHeight - 10);
     }
   }
 }
@@ -152,8 +152,8 @@ function hitDetection() {
         bullets[i].y = - 100;
         enemies[j].health -=10;
         if (enemies[j].health <= 0) {
-          enemies[j].death = true;
-          shorten(enemies);
+          enemies.splice(j, 1);
+          console.log(enemies.length);
         }
       }
     }
